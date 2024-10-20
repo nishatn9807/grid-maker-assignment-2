@@ -86,17 +86,20 @@ function selectColor(){
 function fillU(){
 
     // swithc to event lisenter?
-    let cells = document.querySelectorAll("td"); // Get all table cells
+    let cells = document.querySelectorAll("td");
     cells.forEach(cell => {
         if (cell.style.backgroundColor === "" || cell.style.backgroundColor === "white") {
-            cell.style.backgroundColor = colorSelected; // Fill only uncolored or white cells
+            cell.style.backgroundColor = colorSelected; 
         }
     });
 }
 
 // Fill all cells
 function fillAll(){
-    alert("Clicked Fill All"); // Replace this line with your code.
+    let cells = document.querySelectorAll("td");
+    cells.forEach(cell => {
+            cell.style.backgroundColor = colorSelected; 
+    });
 }
 
 // Clear all cells
