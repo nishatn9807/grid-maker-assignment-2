@@ -16,7 +16,7 @@ function addR() {
     // new row makes colums 
     let grid = document.getElementById("grid");
 
-    setCols = numCols == 0 ? 1 : numCols;
+    let setCols = numCols === 0 ? 1 : numCols;
 
     let newRow = document.createElement("tr");
     for(let i = 0; i < setCols; i++){
@@ -25,6 +25,7 @@ function addR() {
         newRow.appendChild(newCol);
     }
     numRows++;
+    numCols = setCols;
     grid.appendChild(newRow);
 
     updateCountDisplay();
