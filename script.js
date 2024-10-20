@@ -3,9 +3,30 @@ let numRows = 0;
 let numCols = 0;
 let colorSelected; 
 
-// Add a row
+
+function updateCountDisplay() {
+    document.getElementById("rowCountDisplay").innerHTML = `Rows: ${numRows}`;
+    document.getElementById("colCountDisplay").innerHTML = `Columns: ${numCols}`;
+    document.getElementById("colorValue").innerHTML = `Color: ${colorSelected}`;
+}
+
+
 function addR() {
-    alert("Clicked Add Row"); // Replace this line with your code.
+
+    // new row makes colums 
+    let grid = document.getElementById("grid");
+
+    setCols = numCols == 0 ? 1 : numCols;
+
+    let newRow = document.createElement("tr");
+    for(let i = 0; i < setCols; i++){
+        let newCol = document.createElement("td");
+        newRow.appendChild(newCol);
+    }
+    numRows++;
+    grid.appendChild(newRow);
+
+    updateCountDisplay();
 }
 
 // Add a column
