@@ -48,12 +48,33 @@ function addC() {
 
 // Remove a row
 function removeR() {
-    alert("Clicked Remove Row"); // Replace this line with your code.
+    let table = document.getElementById("grid");
+    // do i want to add alert?
+    if (numRows > 0) {
+        table.deleteRow(-1);
+        numRows--;
+        // handle all rows deleted
+        if (numRows === 0) {
+            numCols = 0; 
+        }
+    }
+    updateCountDisplay();
+    
 }
 
 // Remove a column
 function removeC() {
-    alert("Clicked Remove Col"); // Replace this line with your code.
+    let table = document.getElementById("grid");
+    if (numCols > 0) {
+        for (let i = 0; i < numRows; i++) {
+            table.rows[i].deleteCell(-1);
+        }
+        numCols--;
+        if (numCols === 0) {
+            numRows = 0;
+        }
+    }
+    updateCountDisplay();
 }
 
 // Set global variable for selected color
