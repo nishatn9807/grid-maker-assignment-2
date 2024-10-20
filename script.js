@@ -21,6 +21,7 @@ function addR() {
     let newRow = document.createElement("tr");
     for(let i = 0; i < setCols; i++){
         let newCol = document.createElement("td");
+        newCol.setAttribute('onclick', 'this.style.backgroundColor = colorSelected');
         newRow.appendChild(newCol);
     }
     numRows++;
@@ -39,6 +40,7 @@ function addC() {
         let rows = table.getElementsByTagName("tr");
         for (let i = 0; i < numRows; i++) {
             let newCol = document.createElement("td");
+            newCol.setAttribute('onclick', 'this.style.backgroundColor = colorSelected');
             rows[i].appendChild(newCol);
         }
     }
