@@ -31,7 +31,19 @@ function addR() {
 
 // Add a column
 function addC() {
-    alert("Clicked Add Col"); // Replace this line with your code.
+    let table = document.getElementById("grid");
+    // no rows add col. 
+    if (numRows == 0) {
+        addR();
+    } else {
+        let rows = table.getElementsByTagName("tr");
+        for (let i = 0; i < numRows; i++) {
+            let newCol = document.createElement("td");
+            rows[i].appendChild(newCol);
+        }
+    }
+    numCols++;
+    updateCountDisplay();
 }
 
 // Remove a row
