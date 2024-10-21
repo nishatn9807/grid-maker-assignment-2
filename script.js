@@ -3,38 +3,22 @@ let numRows = 0;
 let numCols = 0;
 let colorSelected; 
 
-
-function updateCountDisplay() {
-    document.getElementById("rowCountDisplay").innerHTML = `Rows: ${numRows}`;
-    document.getElementById("colCountDisplay").innerHTML = `Columns: ${numCols}`;
-    document.getElementById("colorValue").innerHTML = `Color: ${colorSelected}`;
-}
-
-
 function addR() {
 
     // new row makes colums 
     let grid = document.getElementById("grid");
-
-    console.log(numCols, numRows);
     let setCols = numCols === 0 ? 1 : numCols;
 
     let newRow = document.createElement("tr");
     for(let i = 0; i < setCols; i++){
-        console.log(numCols, numRows), setCols;
-        console.log(setCols)
         let newCol = document.createElement("td");
         newCol.setAttribute('onclick', 'this.style.backgroundColor = colorSelected');
         newRow.appendChild(newCol);
     }
     numRows++;
-    console.log(numCols, numRows);
     numCols = setCols;
-    console.log(numCols, numRows);
     grid.appendChild(newRow);
-
-    console.log(numCols, numRows);
-    updateCountDisplay();
+    
 }
 
 // Add a column
@@ -53,7 +37,7 @@ function addC() {
         numCols++;
     }
 
-    updateCountDisplay();
+    
 }
 
 // Remove a row
@@ -68,7 +52,7 @@ function removeR() {
             numCols = 0; 
         }
     }
-    updateCountDisplay();
+    
     
 }
 
@@ -84,7 +68,7 @@ function removeC() {
             numRows = 0;
         }
     }
-    updateCountDisplay();
+    
 }
 
 // Set global variable for selected color
