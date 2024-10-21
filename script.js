@@ -3,30 +3,22 @@ let numRows = 0;
 let numCols = 0;
 let colorSelected; 
 
-
-function updateCountDisplay() {
-    document.getElementById("rowCountDisplay").innerHTML = `Rows: ${numRows}`;
-    document.getElementById("colCountDisplay").innerHTML = `Columns: ${numCols}`;
-    document.getElementById("colorValue").innerHTML = `Color: ${colorSelected}`;
-}
-
-
 function addR() {
 
     // new row makes colums 
     let grid = document.getElementById("grid");
-
-    setCols = numCols == 0 ? 1 : numCols;
+    let setCols = numCols === 0 ? 1 : numCols;
 
     let newRow = document.createElement("tr");
     for(let i = 0; i < setCols; i++){
         let newCol = document.createElement("td");
+        newCol.setAttribute('onclick', 'this.style.backgroundColor = colorSelected');
         newRow.appendChild(newCol);
     }
     numRows++;
+    numCols = setCols;
     grid.appendChild(newRow);
-
-    updateCountDisplay();
+    
 }
 
 // Add a column
@@ -39,11 +31,13 @@ function addC() {
         let rows = table.getElementsByTagName("tr");
         for (let i = 0; i < numRows; i++) {
             let newCol = document.createElement("td");
+            newCol.setAttribute('onclick', 'this.style.backgroundColor = colorSelected');
             rows[i].appendChild(newCol);
         }
+        numCols++;
     }
-    numCols++;
-    updateCountDisplay();
+
+    
 }
 
 // Remove a row
@@ -58,7 +52,7 @@ function removeR() {
             numCols = 0; 
         }
     }
-    updateCountDisplay();
+    
     
 }
 
@@ -74,7 +68,7 @@ function removeC() {
             numRows = 0;
         }
     }
-    updateCountDisplay();
+    
 }
 
 // Set global variable for selected color
@@ -104,5 +98,8 @@ function fillAll(){
 
 // Clear all cells
 function clearAll(){
-    alert("Clicked Clear All"); // Replace this line with your code.
+    let cells = document.querySelectorAll("td");
+    cells.forEach(cell => {
+            cell.style.backgroundColor = ""; 
+    });
 }
