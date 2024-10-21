@@ -4,8 +4,6 @@ let numCols = 0;
 let colorSelected; 
 
 function addR() {
-
-    // new row makes colums 
     let grid = document.getElementById("grid");
     let setCols = numCols === 0 ? 1 : numCols;
 
